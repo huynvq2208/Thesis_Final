@@ -160,3 +160,45 @@ class PineconeClient:
         # self.create_new_index(index_name=self.index_name,
         #                 dimension=dimension, metric='cosine')
         self.upsert_items_to_db(df, batch_size=500)
+
+
+
+import numpy as np
+import pandas as pd
+
+# embeddings = np.load('cke_embeddings.npz')
+
+# user_embeddings = embeddings['user_embeddings']
+
+# with open("user_list_oulad.txt", 'r') as file:
+#     next(file)
+#     user_list = [line.strip().split()[0] for line in file]  
+
+# print(len(user_embeddings))
+# print(len(user_list))
+
+# if len(user_embeddings) != len(user_list):
+#     raise ValueError("The number of embeddings does not match the number of users")
+
+# # Create a DataFrame with user IDs and their corresponding embeddings
+# df = pd.DataFrame({
+#     'user_id': user_list,
+#     'embedding': list(user_embeddings)
+# })
+
+# embedding_dim = len(user_embeddings[0])
+# embedding_columns = [f'embedding_{i}' for i in range(embedding_dim)]
+
+# df[embedding_columns] = pd.DataFrame(df['embedding'].tolist(), index=df.index)
+
+# # Drop the original 'embedding' column if you don't need it anymore
+# df = df.drop('embedding', axis=1)
+
+# # Save the DataFrame to a CSV file
+# df.to_csv('user_embeddings_mapped.csv', index=False)
+
+# print("User embeddings have been mapped and saved to 'user_embeddings_mapped.csv'")
+
+pinecone = PineconeClient(api_key='79e04bc1-ae29-4c21-83c1-8cbe418ae013',index_name='oulad-cke-500000')
+
+pinecone.push_users_to_db('user_embeddings_mapped.csv')

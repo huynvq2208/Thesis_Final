@@ -219,7 +219,7 @@ if __name__ == '__main__':
 
         else:
             sess.run(tf.global_variables_initializer())
-            final_save_path = '/embeddings/%s/%s_embeddings.npz' % (args.dataset, model.model_type) 
+            final_save_path = './embeddings/%s/%s_embeddings.npz' % (args.dataset, model.model_type) 
             model.save_embeddings(sess, final_save_path)
 
             cur_best_pre_0 = 0.
@@ -392,7 +392,9 @@ if __name__ == '__main__':
             print('save the weights in path: ', weights_save_path)
 
 
-
+    final_save_path = '%soutput/%s/%s_embeddings.npz' % (
+        args.proj_path, args.dataset, model.model_type) 
+    model.save_embeddings(sess, final_save_path)
 
     recs = np.array(rec_loger)
     pres = np.array(pre_loger)

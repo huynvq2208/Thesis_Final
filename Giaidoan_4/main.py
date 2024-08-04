@@ -29,9 +29,6 @@ with open('user_embeddings.csv', 'w', newline='') as file:
     for embedding in user_embeddings:
         writer.writerow(embedding)
 
-print(user_embeddings)
-exit()
-
 
 def get_resources_by_user(user_id):
     query = """
