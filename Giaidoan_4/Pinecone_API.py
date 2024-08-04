@@ -199,6 +199,3 @@ import pandas as pd
 
 # print("User embeddings have been mapped and saved to 'user_embeddings_mapped.csv'")
 
-pinecone = PineconeClient(api_key='79e04bc1-ae29-4c21-83c1-8cbe418ae013',index_name='oulad-cke-500000')
-
-pinecone.push_users_to_db('user_embeddings_mapped.csv')
