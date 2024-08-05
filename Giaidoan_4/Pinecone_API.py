@@ -100,7 +100,7 @@ class PineconeClient:
         if self.check_exist_name(self.index_name):
             index = self.pc.Index(self.index_name)
             for i, (_, row) in enumerate(df.iterrows()):
-                user_id = str(row['user_id'])
+                user_id = str(int(row['user_id']))
                 values = row[1:].tolist()
                 metadata = {'user_id': user_id}
                 vectors_to_upsert.append((user_id, values, metadata))
@@ -163,10 +163,7 @@ class PineconeClient:
 
 
 
-import numpy as np
-import pandas as pd
-
-# embeddings = np.load('cke_embeddings.npz')
+# embeddings = np.load('cke_embeddings(1).npz')
 
 # user_embeddings = embeddings['user_embeddings']
 
@@ -198,4 +195,3 @@ import pandas as pd
 # df.to_csv('user_embeddings_mapped.csv', index=False)
 
 # print("User embeddings have been mapped and saved to 'user_embeddings_mapped.csv'")
-
